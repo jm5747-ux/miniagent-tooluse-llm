@@ -1,23 +1,35 @@
 # miniagent/cli.py
 
-from __future__ import annotations
 import argparse
 from .agent import MiniAgent
 
-def main():
-    parser = argparse.ArgumentParser(description="MiniAgent: a tool-using agentic LLM skeleton.")
-    parser.add_argument("--task", type=str, required=True, help="Task to run")
+
+def main() -> None:
+    """
+    Command-line entrypoint for running MiniAgent.
+
+    This parses the task provided by the user, initializes the agent,
+    executes the task, and prints the final result.
+    """
+    parser = argparse.ArgumentParser(
+        description="MiniAgent: a lightweight tool-using agentic system"
+    )
+
+    parser.add_argument(
+        "--task",
+        type=str,
+        required=True,
+        help="Task for the agent to execute (e.g. 'calculate (4*3)/5')"
+    )
+
     args = parser.parse_args()
 
     agent = MiniAgent()
-    out = agent.run(args.task)
+    result = agent.run(args.task)
 
-    print("\n=== PLAN ===")
-    print(out["plan"])
-    print("\n=== TRACE ===")
-    print(out["trace"])
-    print("\n=== FINAL ===")
-    print(out["final"])
+    print("\n=== Final Answer ===")
+    print(result)
+
 
 if __name__ == "__main__":
     main()
