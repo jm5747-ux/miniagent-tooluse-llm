@@ -59,3 +59,5 @@ Example usage:
 ```bash
 python -m miniagent.cli --task "calculate (4*3)/5"
 python -m miniagent.cli --task "lookup notes: hallucinations"
+
+_Last verified: December 17, 2025_
