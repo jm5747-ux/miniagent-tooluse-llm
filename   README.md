@@ -15,6 +15,18 @@ Modern LLM systems increasingly require "agentic" behavior: planning, tool use, 
   - Local notes lookup (simple retrieval)
   - URL fetch (content preview)
 
+## Architecture Overview
+
+MiniAgent follows a simple, explicit agent loop:
+
+1. A task is received from the CLI
+2. The planner decides which tool to use
+3. The selected tool is executed with validated inputs
+4. Results are logged in a structured trace
+5. A final response is returned to the user
+
+This design prioritizes transparency, debuggability, and safe tool usage.
+
 ## Quickstart
 
 ### 1) Install
@@ -37,3 +49,13 @@ examples/ contains sample runs
 - Add tool permissioning and safety constraints
 - Add unit tests and evaluation harness
 - Add multi-step tool chaining with verification
+
+### Command-Line Interface (CLI)
+
+MiniAgent exposes a clean CLI interface using `argparse`, allowing tasks to be executed in a reproducible and testable way.
+
+Example usage:
+
+```bash
+python -m miniagent.cli --task "calculate (4*3)/5"
+python -m miniagent.cli --task "lookup notes: hallucinations"
