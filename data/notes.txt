@@ -1,0 +1,5 @@
+MiniAgent Notes:
+- An agent chooses tools based on task type.
+- RAG systems reduce hallucinations by grounding answers in retrieved text.
+- Safety checks should be applied before final responses.
+- Apple roles emphasize reliable, privacy-aware ML systems.
